@@ -3,14 +3,20 @@
 import pyaudio
 import wave
 import sys
+import yaml
 
 CHUNK = 1024
 
+
 if len(sys.argv) < 2:
-    print("Plays a wave file.\n\nUsage: %s filename.wav" % sys.argv[0])
+    print("Provide a Sound ID")
     sys.exit(-1)
 
-wf = wave.open(sys.argv[1], 'rb')
+sound_dictionary = yaml.load(open('config.yaml'))
+
+sound_file = sound_dictionary[sys.argv[1]]['folder']+ sound_dictionary[sys.argv[1]]['file_name'] 
+
+wf = wave.open(sound_file, 'rb')
 
 # instantiate PyAudio (1)
 p = pyaudio.PyAudio()
