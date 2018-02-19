@@ -14,7 +14,9 @@ if len(sys.argv) < 2:
 
 sound_dictionary = yaml.load(open('config.yaml'))
 
-sound_file = sound_dictionary[sys.argv[1]]['folder']+ sound_dictionary[sys.argv[1]]['file_name'] 
+sound_file = 'willow-sound/'+ sound_dictionary[sys.argv[1]]['folder']+'/'+sound_dictionary[sys.argv[1]]['file_name'] 
+
+print sound_file
 
 wf = wave.open(sound_file, 'rb')
 
